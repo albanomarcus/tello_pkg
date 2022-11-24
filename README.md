@@ -64,3 +64,5 @@ cd ~/catkin_ws/
 catkin_make
 . ~/catkin_ws/devel/setup.bash
 ```
+
+teste
