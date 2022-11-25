@@ -1,4 +1,4 @@
-# Instalação ROS Noetic
+# Detecção e rastreamento de pessoas por veículos aéreos não tripulados
 
 ## Sistema Operacional utilizado
 Ubuntu 20.04.5 LTS
@@ -13,7 +13,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 
 ### Configurar chaves
 ```
-sudo apt install curl # icasso não tenha curl instalado
+sudo apt install curl # caso não tenha curl instalado
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -	
 ```
 
