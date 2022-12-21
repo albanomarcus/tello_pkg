@@ -64,3 +64,51 @@ cd ~/catkin_ws/
 catkin_make
 . ~/catkin_ws/devel/setup.bash
 ```
+
+## Instalando pacotes necessários para execução do gazebo com drone - hector_quadrotor (baseado em: https://github.com/RAFALAMAO/hector-quadrotor-noetic)
+Antes de instalar o hector_quadrotor_noetic, é necessário instalar outros 2 pacotes.
+ - unique_identifier: 
+```
+git clone https://github.com/ros-geographic-info/unique_identifier.git
+``` 
+
+ - geographic_info: 
+```
+git clone https://github.com/ros-geographic-info/geographic_info.git
+```
+
+Executar o build:
+
+```
+cd ~/catkin_ws && catkin_make
+```
+
+Então clonar o hector_quadrotor_noetic:
+
+```
+git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
+```
+
+Executar o build novamente:
+
+```
+cd ~/catkin_ws && catkin_make
+```
+
+## Instalando e executando o pacote do TCC no ROS.
+```
+cd catkin_ws/src
+git clone https://github.com/albanomarcus/TCC_Marcus_Albano.git
+```
+
+### Executando o projeto
+Esse launch file iniciará o gazebo com o DJI Tello em um mundo vazio.
+```
+roslaunch tcc_marcus_albano spawn_tello_drone.launch
+```
+
+### Tele operação
+O comando a seguir abrirá uma inteface de controles via botões. Essa interface será refeita futuramente.
+```
+rosrun hector_ui ui_hector_quad.py
+```
