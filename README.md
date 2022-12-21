@@ -99,7 +99,7 @@ cd ~/catkin_ws && catkin_make
 ## Instalando e executando o pacote do TCC no ROS.
 ```
 cd src
-git clone https://github.com/albanomarcus/TCC_Marcus_Albano.git
+git clone https://github.com/albanomarcus/tcc_marcus_albano.git
 ```
 Executar o build novamente:
 
