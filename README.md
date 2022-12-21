@@ -86,7 +86,7 @@ cd ~/catkin_ws && catkin_make
 Então clonar o hector_quadrotor_noetic:
 
 ```
-cd catkin_ws/src
+cd src
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
 ```
 
@@ -98,7 +98,7 @@ cd ~/catkin_ws && catkin_make
 
 ## Instalando e executando o pacote do TCC no ROS.
 ```
-cd catkin_ws/src
+cd src
 git clone https://github.com/albanomarcus/TCC_Marcus_Albano.git
 ```
 
