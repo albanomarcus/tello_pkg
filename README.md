@@ -101,6 +101,11 @@ cd ~/catkin_ws && catkin_make
 cd src
 git clone https://github.com/albanomarcus/TCC_Marcus_Albano.git
 ```
+Executar o build novamente:
+
+```
+cd ~/catkin_ws && catkin_make
+```
 
 ### Executando o projeto
 Esse launch file iniciará o gazebo com o DJI Tello em um mundo vazio.
