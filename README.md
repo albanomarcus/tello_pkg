@@ -86,6 +86,7 @@ cd ~/catkin_ws && catkin_make
 Então clonar o hector_quadrotor_noetic:
 
 ```
+cd catkin_ws/src
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
 ```
 
