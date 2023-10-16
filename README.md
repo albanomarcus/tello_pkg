@@ -1,6 +1,7 @@
 # Detecção e rastreamento de pessoas por veículos aéreos não tripulados
 
 Ubuntu 20.04.5 LTS
+
 ROS Noetic (Guia de instalação: https://github.com/albanomarcus/tcc_marcus_albano/blob/1f0949a211ce8cd17a3977a1c874e357e6c01436/ROS_Install.md)
 
 
@@ -28,14 +29,13 @@ sudo apt install ros-noetic-codec-image-transport
 cd ~/catkin_ws
 git clone https://github.com/albanomarcus/tello_driver.git
 git clone https://github.com/albanomarcus/camera_info_manager_py.git
-catkin build
-source devel/setup.bash
+catkin build && source devel/setup.bash
 ```
 ## Executando
 
 Terminal #1:
 ```
-roslaunch tello_driver tello_node_2.launch
+roslaunch tello_driver tello_node.launch
 ```
 Terminal #2:
 ```
@@ -43,7 +43,30 @@ roslaunch orb_slam3_ros ntuviral_mono.launch
 ```
 Terminal #3:
 ```
-cd ~/catkin_ws/src/tcc_marcus_albano && python3 tello_control.py 
+rosrun tcc_tello tello_control.py 
+```
+## Instalação pacotes para executar a simulação
+
+### Clonar pacotes adaptados para ROS Noetic
+
+```
+git clone https://github.com/ros-geographic-info/unique_identifier.git
+git clone https://github.com/ros-geographic-info/geographic_info.git
+git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
+catkin build && source devel/setup.bash
+```
+## Executando
+Terminal #1:
+```
+roslaunch tcc_tello spawn_tello_drone.launch 
+```
+Terminal #2:
+```
+roslaunch orb_slam3_ros ntuviral_mono.launch
+```
+Terminal #3:
+```
+rosrun tcc_tello tello_control.py 
 ```
 
 
