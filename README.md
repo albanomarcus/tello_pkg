@@ -34,13 +34,16 @@ source devel/setup.bash
 ## Executando
 
 Terminal #1:
-* roslaunch tello_driver tello_node_2.launch
-
+```
+roslaunch tello_driver tello_node_2.launch
+```
 Terminal #2:
-* roslaunch orb_slam3_ros ntuviral_mono.launch
-
+```
+roslaunch orb_slam3_ros ntuviral_mono.launch
+```
 Terminal #3:
-* cd ~/catkin_ws/src/tcc_marcus_albano && python3 tello_control.py 
-
+```
+cd ~/catkin_ws/src/tcc_marcus_albano && python3 tello_control.py 
+```
 
 
