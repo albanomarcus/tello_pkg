@@ -1,71 +1,46 @@
-# Instalação ROS Noetic
+# Detecção e rastreamento de pessoas por veículos aéreos não tripulados
 
-## Sistema Operacional utilizado
 Ubuntu 20.04.5 LTS
+ROS Noetic (Guia de instalação: https://github.com/albanomarcus/tcc_marcus_albano/blob/1f0949a211ce8cd17a3977a1c874e357e6c01436/ROS_Install.md)
 
-## Guia de instalação ROS Noetic (wiki.ros.org/noetic/Installarion/Ubuntu)
 
-### Configurar o computador para que ele aceite softwares de packages.ros.org
-
-```
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-```
-
-### Configurar chaves
-```
-sudo apt install curl # caso não tenha curl instalado
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -	
-```
-
-### Instalando ROS Noetic
-Verificar se o sistema está atualizado
-```
-sudo apt update
-```	
-
-### Instalar a versão Full do ROS Noetic
-```
-sudo apt install ros-noetic-desktop-full
-```
-
-### Configurando o ambiente (modificando o bash de forma automática)	
-```
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-```
-
-### Adicionando as dependências e ferramentas 
-```
-sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-```	
-### Instalando Catkin_tools para usar catkin build
-```
-wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install python3-catkin-tools
-```
-### Inicializar rosdep
-```
-sudo rosdep init
-rosdep update
-```
-## Criando um ROS Workspace
-### Criar um catkin workspace
-```
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/		
-catkin build
-```		
-
-### Criando um package
+## Inicializando
 ```
 cd ~/catkin_ws/src
-catkin_create_pkg tcc_marcus_albano std_msgs rospy roscpp
+git clone https://github.com/albanomarcus/tcc_marcus_albano.git
 ```
 
-### Após a criação executar:
+## ORB-SLAM3
+Seguir as instruções para instalação: https://github.com/albanomarcus/tcc_marcus_albano/blob/eee8ddd550129006369752c2910a9d61d42f0281/ORB-SLAM3_instructions.md
+
+## Instalação Tello Driver 
+Para realizar a comunicação com o drone real.
+
+### Instalando pacotes dependentes
 ```
-cd ~/catkin_ws/ 		
+sudo apt install ros-noetic-cv-bridge
+sudo apt install ros-noetic-image-transport
+sudo apt install ros-noetic-camera-info-manager
+sudo apt install ros-noetic-codec-image-transport
+```
+### Clonar pacotes adaptados para ROS Noetic
+```
+cd ~/catkin_ws
+git clone https://github.com/albanomarcus/tello_driver.git
+git clone https://github.com/albanomarcus/camera_info_manager_py.git
 catkin build
-. ~/catkin_ws/devel/setup.bash
+source devel/setup.bash
 ```
+## Executando
+
+Terminal #1:
+* roslaunch tello_driver tello_node_2.launch
+
+Terminal #2:
+* roslaunch orb_slam3_ros ntuviral_mono.launch
+
+Terminal #3:
+* cd ~/catkin_ws/src/tcc_marcus_albano && python3 tello_control.py 
+
+
+
