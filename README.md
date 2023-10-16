@@ -50,8 +50,6 @@ rosrun tcc_tello tello_control.py
 ### Clonar pacotes adaptados para ROS Noetic
 
 ```
-git clone https://github.com/ros-geographic-info/unique_identifier.git
-git clone https://github.com/ros-geographic-info/geographic_info.git
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
 catkin build && source devel/setup.bash
 ```
