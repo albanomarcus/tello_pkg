@@ -27,20 +27,22 @@ sudo apt install ros-noetic-codec-image-transport
 ### Clonar pacotes adaptados para ROS Noetic
 ```
 cd ~/catkin_ws
-git clone https://github.com/albanomarcus/tello_driver.git
+git clone --recursive https://github.com/albanomarcus/tello_driver.git
 git clone https://github.com/albanomarcus/camera_info_manager_py.git
 catkin build && source devel/setup.bash
 ```
 ## Executando
-
-Terminal #1:
+Para inicializar os tópicos responsáveis pela comunicação com o Tello: 
+Terminal #1: 
 ```
 roslaunch tello_driver tello_node.launch
 ```
+Para inicializar o OrbSlam3:
 Terminal #2:
 ```
 roslaunch orb_slam3_ros ntuviral_mono.launch
 ```
+Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
 rosrun tcc_tello tello_control.py 
@@ -54,14 +56,17 @@ git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
 catkin build && source devel/setup.bash
 ```
 ## Executando
+Para inicializar os tópicos responsáveis pela simulação do Tello: 
 Terminal #1:
 ```
 roslaunch tcc_tello spawn_tello_drone.launch 
 ```
+Para inicializar o OrbSlam3:
 Terminal #2:
 ```
 roslaunch orb_slam3_ros ntuviral_mono.launch
 ```
+Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
 rosrun tcc_tello tello_control.py 
