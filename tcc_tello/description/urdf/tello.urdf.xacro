@@ -15,23 +15,27 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${90*pi/180}" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-	  <mesh filename="package://tcc_tello/description/meshes/tello/tello.dae"/>
+	      <mesh filename="package://tcc_tello/description/meshes/tello/tello.dae"/>
         </geometry>
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${90*pi/180}" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-	  <mesh filename="package://tcc_tello/description/meshes/tello/tello.stl"/>
+	      <mesh filename="package://tcc_tello/description/meshes/tello/tello.dae"/>
         </geometry>
       </collision>
     </link>
 
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <!-- Sonar height sensor -->
-    <xacro:sonar_sensor name="sonar" parent="base_link" ros_topic="sonar_height" update_rate="10" min_range="0.03" max_range="3.0" field_of_view="${40*pi/180}" ray_count="3">
-      <origin xyz="0.0 -0.01 0.005" rpy="0 ${90*pi/180} ${90*pi/180}"/>
+    <xacro:sonar_sensor name="sonar" parent="base_link" ros_topic="sonar_height" update_rate="10" min_range="0.003" max_range="3.0" field_of_view="${40*pi/180}" ray_count="3">
+      <origin xyz="0.0 0.0 0.018" rpy="0 ${90*pi/180} 0"/>
     </xacro:sonar_sensor>
 
   </xacro:macro>
