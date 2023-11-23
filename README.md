@@ -23,6 +23,8 @@ sudo apt install ros-noetic-cv-bridge
 sudo apt install ros-noetic-image-transport
 sudo apt install ros-noetic-camera-info-manager
 sudo apt install ros-noetic-codec-image-transport
+
+sudo apt install liburdfdom-tools #gerar arquivos pdf do urdf
 ```
 ### Clonar pacotes adaptados para ROS Noetic
 ```
@@ -49,17 +51,20 @@ rosrun tcc_tello tello_control.py
 ```
 ## Instalação pacotes para executar a simulação
 
-### Clonar pacotes adaptados para ROS Noetic
+### Clonar pacotes adaptados do Hector Quadrotor para ROS Noetic
 
 ```
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
+git clone https://github.com/ros-geographic-info/unique_identifier.git
+git clone https://github.com/ros-geographic-info/geographic_info.git
+
 catkin build && source devel/setup.bash
 ```
 ## Executando
 Para inicializar os tópicos responsáveis pela simulação do Tello: 
 Terminal #1:
 ```
-roslaunch tcc_tello spawn_tello_drone.launch 
+roslaunch tcc_tello gazebo_tello_node.launch 
 ```
 Para inicializar o OrbSlam3:
 Terminal #2:
@@ -69,7 +74,7 @@ roslaunch orb_slam3_ros ntuviral_mono.launch
 Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
-rosrun tcc_tello tello_control.py 
+rosrun tcc_tello gazebo_tello_control.py 
 ```
 
 

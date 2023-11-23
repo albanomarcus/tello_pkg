@@ -12,10 +12,10 @@ class tello_control:
 
     #teclas de comando de velocidade
     move_keys = {
-        'w':(0,speed,0,0),      #Mover para frente
-        'a':(-speed,0,0,0),     #Mover para esquerda
-        's':(0,-speed,0,0),     #Mover para trás
-        'd':(speed,0,0,0),      #Mover para direita
+        'w':(speed,0,0,0),      #Mover para frente
+        'a':(0,-speed,0,0),     #Mover para esquerda
+        's':(-speed,0,0,0),     #Mover para trás
+        'd':(0,speed,0,0),      #Mover para direita
         '0':(0,0,0,0),          #Ficar parado
         '4':(0,0,0,speed),      #Girar sentido anti-horário
         '6':(0,0,0,-speed),     #Girar sentido horário

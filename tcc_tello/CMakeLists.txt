@@ -11,6 +11,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  controller_manager
+  gazebo_ros
+  joint_state_publisher
+  robot_state_publisher
+  rviz
 )
 
 ## System dependencies are found with CMake's conventions
@@ -105,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES tcc_tello
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  CATKIN_DEPENDS roscpp rospy std_msgs controller_manager gazebo_ros joint_state_publisher robot_state_publisher rviz
 #  DEPENDS system_lib
 )
 
