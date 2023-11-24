@@ -73,7 +73,8 @@ roslaunch orb_slam3_ros ntuviral_mono.launch
 Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
-rosrun tcc_tello gazebo_tello_control.py 
+roslaunch tcc_tello gazebo_tello_control.launch
+
 ```
 
 
