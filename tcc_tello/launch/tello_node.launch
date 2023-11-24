@@ -19,7 +19,7 @@
 			<param name="camera_calibration" value="$(arg camera_calibration)" />			
 		</node>
 
-		<node pkg="image_transport" name="image_compressed" type="republish" args="compressed in:=image_raw raw out:=/left/image_raw" >
+		<node pkg="image_transport" name="image_decompressed" type="republish" args="compressed in:=image_raw raw out:=/front/image_raw" >
 			<param name="image_transport" value="h264"/>
 		</node>
 		</group>

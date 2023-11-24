@@ -2,8 +2,7 @@
 
 Ubuntu 20.04.5 LTS
 
-ROS Noetic (Guia de instalação: https://github.com/albanomarcus/tcc_marcus_albano/blob/1f0949a211ce8cd17a3977a1c874e357e6c01436/ROS_Install.md)
-
+ROS Noetic - [Guia de instalação](https://github.com/albanomarcus/tcc_marcus_albano/blob/1f0949a211ce8cd17a3977a1c874e357e6c01436/ROS_Install.md)
 
 ## Inicializando
 ```
@@ -12,7 +11,7 @@ git clone https://github.com/albanomarcus/tcc_marcus_albano.git
 ```
 
 ## ORB-SLAM3
-Seguir as instruções para instalação: https://github.com/albanomarcus/tcc_marcus_albano/blob/eee8ddd550129006369752c2910a9d61d42f0281/ORB-SLAM3_instructions.md
+Para instalar, seguir o [Guia de instalação](https://github.com/albanomarcus/tcc_marcus_albano/blob/eee8ddd550129006369752c2910a9d61d42f0281/ORB-SLAM3_instructions.md)
 
 ## Instalação Tello Driver 
 Para realizar a comunicação com o drone real.
