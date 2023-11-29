@@ -74,7 +74,23 @@ Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
 roslaunch tcc_tello gazebo_tello_control.launch
-
 ```
 
+## Plotando gráficos com PlotJuggler
+
+Para instalar:
+```
+sudo apt install ros-noetic-plotjuggler-ros
+```
+
+Executar:
+```
+rosrun plotjuggler plotjuggler
+```
+
+##Teste
+sudo apt install python3-pip
+pip install av
+pip install opencv-python
+pip install image
 
