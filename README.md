@@ -63,12 +63,12 @@ catkin build && source devel/setup.bash
 Para inicializar os tópicos responsáveis pela simulação do Tello: 
 Terminal #1:
 ```
-roslaunch tcc_tello gazebo_tello_node.launch 
+roslaunch tcc_tello gazebo_tello_orb_slam.launch
 ```
 Para inicializar o OrbSlam3:
 Terminal #2:
 ```
-roslaunch orb_slam3_ros ntuviral_mono.launch
+roslaunch tcc_tello gazebo_tello_node.launch 
 ```
 Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:

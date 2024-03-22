@@ -11,7 +11,7 @@
     
     <!-- Forward facing camera -->
     <xacro:include filename="$(find hector_sensors_description)/urdf/generic_camera.urdf.xacro" />
-    <xacro:generic_camera name="front_cam" parent="base_link" ros_topic="camera/image" cam_info_topic="camera/camera_info" update_rate="30" res_x="960" res_y="720" image_format="R8G8B8" hfov="90">
+    <xacro:generic_camera name="front_cam" parent="base_link" ros_topic="camera/image" cam_info_topic="camera/camera_info" update_rate="30" res_x="752" res_y="480" image_format="R8G8B8" hfov="90">
       <origin xyz="0.048304 0 0.007574" rpy="0 0 0"/>
     </xacro:generic_camera>
     <xacro:include filename="$(find hector_quadrotor_gazebo)/urdf/quadrotor_plugins.gazebo.xacro" />
