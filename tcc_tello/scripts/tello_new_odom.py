@@ -11,11 +11,6 @@ offset_odom = Odometry()
 offset_z = Float32
 last_pose = Odometry()
 
-#variáveis auxiliares
-first_time = False
-land = True
-isFlying = False
-
 # status possíveis = ["desligado",
 #                     "voando",
 #                     "pousando"
@@ -27,8 +22,7 @@ status = "desligado"
 
 # Função para alterar variáveis auxiliares após takeoff
 def callback_takeoff(msg):
-    global status, land, isFlying
-    land = False
+    global status
     if status == "desligado":
         rospy.sleep(4)
         status = "decolando"
@@ -50,7 +44,7 @@ def callback_odom(msg, callback_args):
     publisher = callback_args
     new_odom = Odometry()
 
-    global offset_odom, status, offset_z, last_pose
+    global offset_odom, offset_z, status, last_pose
     
 # executa a primeira vez para definir os offsets    
     if status == "decolando": 

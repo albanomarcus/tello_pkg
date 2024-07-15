@@ -8,7 +8,7 @@ import sys, select, termios, tty
 class tello_control:
 
     #velocidade do drone 0 a 1.0
-    speed = 0.2
+    speed = 0.05
 
     #teclas de comando de velocidade
     move_keys = {
@@ -17,8 +17,8 @@ class tello_control:
         's':(-speed,0,0,0),     #Mover para trás
         'd':(0,-speed,0,0),     #Mover para direita
         '0':(0,0,0,0),          #Ficar parado
-        '4':(0,0,0,2*speed),    #Girar sentido anti-horário
-        '6':(0,0,0,-2*speed),   #Girar sentido horário
+        '4':(0,0,0,0.7*speed),    #Girar sentido anti-horário
+        '6':(0,0,0,-0.7*speed),   #Girar sentido horário
         '8':(0,0,speed,0),      #Mover para cima
         '5':(0,0,-speed,0),     #Mover para baixo
     }
