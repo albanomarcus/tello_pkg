@@ -7,7 +7,6 @@ File.version: "1.0"
 
 Camera.type: "PinHole"
 
-System.LoadAtlasFromFile: "mapateste01"
 # Camera calibration and distortion parameters (OpenCV) 
 Camera1.fx: 899.8993371882239 #4.250258563372763e+02
 Camera1.fy: 891.2688298342263 #4.267976260903337e+02
@@ -20,11 +19,11 @@ Camera1.p1: 0.00019359 #7.784489598138802e-04
 Camera1.p2: 1.76187114e-05 #-2.277853975035461e-04
 
 # Camera resolution
-Camera.width: 960
+Camera.width: 1280
 Camera.height: 720
 
-# Camera.newWidth: 600
-# Camera.newHeight: 350
+#Camera.newWidth: 640
+#Camera.newHeight: 360
 
 # Camera frames per second 
 Camera.fps: 30
@@ -32,25 +31,25 @@ Camera.fps: 30
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
-# # Transformation from camera to body-frame (imu)
+# # # Transformation from camera to body-frame (imu)
 # IMU.T_b_c1: !!opencv-matrix
-#    rows: 4
-#    cols: 4
-#    dt: f
-#    data: [0.0148655429818, -0.999880929698, 0.00414029679422, -0.0216401454975,
-#          0.999557249008, 0.0149672133247, 0.025715529948, -0.064676986768,
-#         -0.0257744366974, 0.00375618835797, 0.999660727178, 0.00981073058949,
-#          0.0, 0.0, 0.0, 1.0]
+#      rows: 4
+#      cols: 4
+#      dt: f
+#      data: [0.0148655429818, -0.999880929698, 0.00414029679422, -0.0216401454975,
+#            0.999557249008, 0.0149672133247, 0.025715529948, -0.064676986768,
+#           -0.0257744366974, 0.00375618835797, 0.999660727178, 0.00981073058949,
+#            0.0, 0.0, 0.0, 1.0]
 
-# # IMU noise
-# IMU.NoiseGyro: 0.35 #1.7e-4 #1.6968e-04
-# IMU.NoiseAcc: 0.35 #2.0000e-3 #2.0e-3
-# IMU.GyroWalk: 0.35 #1.9393e-05 
-# IMU.AccWalk: 0.35 #3.0000e-03 # 3e-03
-# IMU.Frequency: 200.0
+#  # IMU noise
+# IMU.NoiseGyro: 1.7e-4 #1.6968e-04
+# IMU.NoiseAcc: 2.0000e-3 #2.0e-3
+# IMU.GyroWalk: 1.9393e-05 
+# IMU.AccWalk: 3.0000e-03 # 3e-03
+# IMU.Frequency: 100.0
 
 # RPY angles (in rad) the world frame will be rotated by
-WorldRPY.roll: 1.57079632679
+WorldRPY.roll: 1.57079632679 #1.91986 #1.74533 
 WorldRPY.pitch: 0.0
 WorldRPY.yaw: 1.57079632679
 
@@ -59,7 +58,7 @@ WorldRPY.yaw: 1.57079632679
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 5000 # 1000
+ORBextractor.nFeatures: 1200 #5000 # 1000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -88,4 +87,11 @@ Viewer.ViewpointY: -1.7
 Viewer.ViewpointZ: 0.8
 Viewer.ViewpointF: -500.0
 Viewer.imageViewScale: 1.0
+
+#--------------------------------------------------------------------------------------------
+# Save and Load Atlas
+#--------------------------------------------------------------------------------------------
+
+# System.LoadAtlasFromFile: "./yourdirectory/atlas"
+# System.SaveAtlasToFile: "./yourdirectory/atlas"
 

@@ -61,7 +61,7 @@ def callback_odom(msg, callback_args):
         offset_odom.twist.twist.angular.x    =  msg.twist.twist.angular.x
         offset_odom.twist.twist.angular.y    =  msg.twist.twist.angular.y
         offset_odom.twist.twist.angular.z    =  msg.twist.twist.angular.z
-        print("*************************primeira vez*************************")
+        #print("*************************primeira vez*************************")
         status = "voando"
 
 # executa o processo de pouso e remove "impulso" do gráfico.
@@ -79,7 +79,7 @@ def callback_odom(msg, callback_args):
         new_odom.twist.twist.angular.x   =  msg.twist.twist.angular.x -   offset_odom.twist.twist.angular.x
         new_odom.twist.twist.angular.y   =  msg.twist.twist.angular.y -   offset_odom.twist.twist.angular.y
         new_odom.twist.twist.angular.z   =  msg.twist.twist.angular.z -   offset_odom.twist.twist.angular.z   
-        print("--------------------------------pousando--------------------------------")
+        #print("--------------------------------pousando--------------------------------")
         
         # armazena os ultimos valores de posição x, y e orientação (verificar necessidade de armazenar a orientação)
         last_pose.pose.pose.position.x = new_odom.pose.pose.position.x
@@ -106,7 +106,7 @@ def callback_odom(msg, callback_args):
         new_odom.twist.twist.angular.x   =  0
         new_odom.twist.twist.angular.y   =  0
         new_odom.twist.twist.angular.z   =  0   
-        print("--------------------------------desligado--------------------------------") 
+        #print("--------------------------------desligado--------------------------------") 
         publisher.publish(new_odom)
         
 # publica a odometria durante status = voando.
@@ -126,7 +126,7 @@ def callback_odom(msg, callback_args):
         new_odom.twist.twist.angular.z   =  msg.twist.twist.angular.z - offset_odom.twist.twist.angular.z 
         publisher.publish(new_odom)
 
-    print (status)
+    #print (status)
 
 def main():
 # cria node para o script
