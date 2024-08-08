@@ -31,7 +31,7 @@ Camera.fps: 30
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
-# # # Transformation from camera to body-frame (imu)
+# # Transformation from camera to body-frame (imu)
 # IMU.T_b_c1: !!opencv-matrix
 #      rows: 4
 #      cols: 4
@@ -51,7 +51,7 @@ Camera.RGB: 1
 # RPY angles (in rad) the world frame will be rotated by
 WorldRPY.roll: 1.57079632679 #1.91986 #1.74533 
 WorldRPY.pitch: 0.0
-WorldRPY.yaw: 1.57079632679
+WorldRPY.yaw: 1.4
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters

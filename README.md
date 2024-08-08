@@ -88,9 +88,10 @@ Executar:
 rosrun plotjuggler plotjuggler
 ```
 
-##Teste
-sudo apt install python3-pip
-pip install av
-pip install opencv-python
-pip install image
+## ORGANIZAR A PARTIR DAQUI
+Install avoidance module dependencies (pointcloud library and octomap).
+
+sudo apt install libpcl1 ros-noetic-octomap-*
+
+
 
