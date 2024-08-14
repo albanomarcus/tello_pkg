@@ -22,8 +22,8 @@ def callback(point_cloud):
     Callback para processar a nuvem de pontos recebida.
     """
     # Colocar o valor da escala calculada 
-    scale_factor = 3.8455560957865367
-    rospy.loginfo(f'Fator de escala calculado: {scale_factor}')
+    scale_factor = 3.8455560957865367 #rosbag = subset.bag
+    # scale_factor = 8.384939138795436 #rosbag = subset2.bag
 
     # Escalar a nuvem de pontos
     scaled_cloud = scale_point_cloud(point_cloud, scale_factor)

@@ -3,6 +3,7 @@ project(tcc_tello)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+cmake_policy(SET CMP0048 NEW)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -209,3 +210,9 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+set(CMAKE_BUILD_RPATH "/opt/ros/noetic/lib")
+set(CMAKE_INSTALL_RPATH "/opt/ros/noetic/lib")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+
+

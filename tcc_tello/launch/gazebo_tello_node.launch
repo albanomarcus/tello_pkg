@@ -28,5 +28,7 @@
   <node pkg="tcc_tello" name="convert_imu" type="gazebo_odom_to_imu.py" output="screen">	
 		</node>
 
+  <!-- Visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/gazebo_rviz.rviz" output="screen" />
 
 </launch>
