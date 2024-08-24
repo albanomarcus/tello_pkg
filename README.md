@@ -93,7 +93,20 @@ Install avoidance module dependencies (pointcloud library and octomap).
 
 sudo apt install libpcl1 ros-noetic-octomap-*
 
-
 sudo apt install ros-noetic-pointcloud-to-laserscan
 
 executar roslaunch gazebo_point_cloud_manipulation.launch apenas quando a execução da rosbag estiver sendo finalizada.
+
+sudo apt install ros-noetic-move-base
+
+sudo apt-get install ros-noetic-global-planner
+
+
+
+
+
+
+
+
+
+
