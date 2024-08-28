@@ -36,7 +36,7 @@ sudo apt install ros-noetic-hector-trajectory-server
 cd ~/catkin_ws/src
 git clone https://github.com/thien94/orb_slam3_ros.git
 cd ../
-catkin_make
+catkin build
 ```
 ## Post installation
 ```

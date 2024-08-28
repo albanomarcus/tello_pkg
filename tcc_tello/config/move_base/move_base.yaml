@@ -7,5 +7,8 @@ planner_patience: 15
 controller_frequency: 5
 controller_patience: 15
 clearing_rotation_allowed: false
-base_global_planner: global_planner/GlobalPlanner
+base_global_planner: "navfn/NavfnROS" #global_planner/GlobalPlanner
 base_local_planner: base_local_planner/TrajectoryPlannerROS
+
+NavfnROS:
+  allow_unknown:  true

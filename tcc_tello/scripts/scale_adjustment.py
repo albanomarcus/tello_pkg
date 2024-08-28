@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Utilizar esse script após ter o valor da escala definida.
+"""
 import rospy
 import sensor_msgs.point_cloud2 as pc2
 from sensor_msgs.msg import PointCloud2
@@ -12,7 +14,7 @@ def scale_point_cloud(point_cloud, scale_factor):
     """
     points = np.array(list(pc2.read_points(point_cloud,field_names=("x", "y", "z"), skip_nans=True)))
     points[:, :3] *= scale_factor
-    modified_points = [(x + 2.0, y, z + 1.0) for x, y, z in points]
+    modified_points = [(x + 3.0, y, z + 1.0) for x, y, z in points]
     scaled_point_cloud = pc2.create_cloud(point_cloud.header, point_cloud.fields, modified_points)
     return scaled_point_cloud
     

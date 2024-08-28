@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Script utilizado para controle do Tello.
+"""
 import rospy
 from std_msgs.msg import Empty
 from geometry_msgs.msg import Twist

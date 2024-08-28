@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Script utilizado para corrigir a odometria gerada pelo Tello.
+"""
 #imports
 import rospy
 from std_msgs.msg import String, Empty, Float32

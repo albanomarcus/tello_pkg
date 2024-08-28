@@ -49,9 +49,9 @@ Camera.RGB: 1
 # IMU.Frequency: 100.0
 
 # RPY angles (in rad) the world frame will be rotated by
-WorldRPY.roll: 1.57079632679 #1.91986 #1.74533 
+WorldRPY.roll: 1.61 #1.57079632679 #1.91986 #1.74533 
 WorldRPY.pitch: 0.0
-WorldRPY.yaw: 1.4
+WorldRPY.yaw: 1.40
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters

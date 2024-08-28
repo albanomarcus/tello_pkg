@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Script auxilar para executar pouso e decolagem do Tello na simulação.
+"""
 import rospy
 from std_msgs.msg import String, Empty
 from sensor_msgs.msg import Range

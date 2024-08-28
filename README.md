@@ -36,17 +36,17 @@ catkin build && source devel/setup.bash
 Para inicializar os tópicos responsáveis pela comunicação com o Tello: 
 Terminal #1: 
 ```
-roslaunch tello_driver tello_node.launch
+roslaunch tcc_tello tello_node.launch
 ```
 Para inicializar o OrbSlam3:
 Terminal #2:
 ```
-roslaunch orb_slam3_ros ntuviral_mono.launch
+roslaunch tcc_tello tello_orb_slam.launch
 ```
 Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
 ```
-rosrun tcc_tello tello_control.py 
+roslaunch tcc_tello tello_control.launch
 ```
 ## Instalação pacotes para executar a simulação
 
@@ -61,14 +61,14 @@ catkin build && source devel/setup.bash
 ```
 ## Executando
 Para inicializar os tópicos responsáveis pela simulação do Tello: 
-Terminal #1:
+Terminal #1: 
 ```
-roslaunch tcc_tello gazebo_tello_orb_slam.launch
+roslaunch tcc_tello gazebo_tello_node.launch
 ```
 Para inicializar o OrbSlam3:
 Terminal #2:
 ```
-roslaunch tcc_tello gazebo_tello_node.launch 
+roslaunch tcc_tello tello_orb_slam.launch
 ```
 Para teleoperar o Tello utilizando o teclado do computador:
 Terminal #3:
@@ -100,6 +100,12 @@ executar roslaunch gazebo_point_cloud_manipulation.launch apenas quando a execu�
 sudo apt install ros-noetic-move-base
 
 sudo apt-get install ros-noetic-global-planner
+
+
+### TO DO:
+
+
+Criar novo mapa para simulação e remover os outros que não serão utilizados.
 
 
 

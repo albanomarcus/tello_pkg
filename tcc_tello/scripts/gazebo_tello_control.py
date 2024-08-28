@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Script utilizado para controlar o Tello na simulação.
+"""
 import rospy
 from std_msgs.msg import Empty
 from geometry_msgs.msg import Twist
@@ -8,7 +10,7 @@ import sys, select, termios, tty
 class tello_control:
 
     #velocidade do drone 0 a 1.0
-    speed = 0.2
+    speed = 0.10
 
     #teclas de comando de velocidade
     move_keys = {

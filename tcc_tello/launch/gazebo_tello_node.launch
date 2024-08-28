@@ -3,7 +3,7 @@
 <!-- Inicializa o Gazebo -->
 <launch>
   <remap from="/cmd_vel" to="/tello/cmd_vel" />
-  <remap from="/front_cam/camera/image" to="/camera/image_raw" />
+  <remap from="/front_cam/camera/image" to="/tello/camera/image_raw" />
   
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
@@ -25,10 +25,7 @@
     <arg name="model" value="$(find tcc_tello)/description/urdf/tello_with_cam.gazebo.xacro"/> 
   </include>
 
-  <node pkg="tcc_tello" name="convert_imu" type="gazebo_odom_to_imu.py" output="screen">	
-		</node>
-
   <!-- Visualization -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/gazebo_rviz.rviz" output="screen" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/config_rviz.rviz" output="screen" />
 
 </launch>

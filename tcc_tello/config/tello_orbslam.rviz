@@ -83,16 +83,16 @@ Visualization Manager:
           base_footprint:
             base_stabilized:
               base_link:
-                front_cam_link:
-                  front_cam_optical_frame:
-                    {}
                 sonar_link:
                   {}
+          front_cam_link:
+            front_cam_optical_frame:
+              {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera/image_raw
+      Image Topic: /tello/camera/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-    <node name="point_cloud_scaled" pkg="tcc_tello" type="gazebo_scale_adjustment.py" output="screen" />
+    <node name="point_cloud_scaled" pkg="tcc_tello" type="scale_adjustment.py" output="screen" />
     
     <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
 		<param name="resolution" value="0.05" />

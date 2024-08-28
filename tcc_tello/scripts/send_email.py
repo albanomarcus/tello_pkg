@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Envia email a partir de uma conta gmail com anexo.
+"""
+
 import smtplib
 import ssl
 
