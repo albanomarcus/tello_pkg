@@ -6,4 +6,4 @@
 
 robot_base_frame: base_link
 footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
-# footprint_padding: 0.1
+footprint_padding: 0.2

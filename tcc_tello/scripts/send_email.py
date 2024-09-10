@@ -1,67 +1,82 @@
 #!/usr/bin/env python3
 """
-Envia email a partir de uma conta gmail com anexo.
+Send email from a Gmail account with an attachment.
 """
 
 import smtplib
 import ssl
+import rospy
+from std_msgs.msg import String
 
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-try:
-  # cria o servidor SMTP
-  context = ssl.create_default_context()
-  server = smtplib.SMTP('smtp.gmail.com', 587)
-  server.ehlo()
-  server.starttls(context=context)
-  server.ehlo()
+def send_email(filename):
+    try:
+        # Create SMTP server
+        context = ssl.create_default_context()
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls(context=context)
+        server.ehlo()
 
-  # dados do remetente
-  sender_email = 'alertas.tcc.marcusalbano@gmail.com'
-  password = 'tvlryemcpovimmld'
+        # Sender information
+        sender_email = 'alertas.tcc.marcusalbano@gmail.com'
+        password = 'tvlryemcpovimmld'
 
-  # dados do destinatário
-  receivers = ['alertas.tcc.marcusalbano@gmail.com']
+        # Recipient information
+        receivers = ['alertas.tcc.marcusalbano@gmail.com']
 
-  # dados do e-mail
-  message = MIMEMultipart()
-  message['Subject'] = 'Teste - Alerta!'
-  message['From'] = sender_email
-  message['To'] = ','.join(receivers)
+        # Email data
+        message = MIMEMultipart()
+        message['Subject'] = 'Teste - Alerta!'
+        message['From'] = sender_email
+        message['To'] = ','.join(receivers)
 
-  html = 'Alerta!!!'
+        html = 'Alerta!!!'
+        message.attach(MIMEText(html, 'html'))
 
-  message.attach(MIMEText(html, 'html'))
+        # Set attachment attributes
+        attachment = MIMEBase('application', 'octet-stream')
 
-  # define os atributos do anexo
-  file = 'teste.png'
-  filename = f'/home/marcus/Pictures/{file}'
-  attachment = MIMEBase('application', 'octet-stream')
+        with open(filename, 'rb') as f:
+            attachment.set_payload(f.read())
 
-  with open(filename, 'rb') as f:
-    attachment.set_payload(f.read())
+        encoders.encode_base64(attachment)
 
-  encoders.encode_base64(attachment)
+        attachment.add_header(
+            'Content-Disposition',
+            f'attachment; filename={filename}',
+        )
 
-  attachment.add_header(
-    'Content-Disposition',
-    f'attachment; filename={filename}',
-  )
+        # Attach file to email
+        message.attach(attachment)
 
-  # anexa o arquivo no e-mail
-  message.attach(attachment)
+        # Login to server
+        server.login(sender_email, password)
 
-  # realiza login no servidor
-  server.login(sender_email, password)
+        # Send email
+        server.sendmail(sender_email, receivers, message.as_string())
+        rospy.loginfo(f"Email sent with attachment: {filename}")
 
-  # envia o email
-  server.sendmail(sender_email, receivers, message.as_string())
+    except Exception as e:
+        rospy.logerr(f"Error: {e}")
+    finally:
+        # Close the server
+        server.quit()
 
-except Exception as e:
-  print(f'Erros: {e}')
-finally:
-  # fecha o servidor
-  server.quit()
+def file_callback(msg):
+    filename = msg.data
+    rospy.loginfo(f"Received file: {filename}")
+    send_email(filename)
+
+def email_sender_node():
+    rospy.init_node('email_sender', anonymous=False)
+    rospy.Subscriber('/file_face_detected', String, file_callback)
+    rospy.loginfo("Email sender node is running...")
+    rospy.spin()
+
+if __name__ == '__main__':
+    email_sender_node()

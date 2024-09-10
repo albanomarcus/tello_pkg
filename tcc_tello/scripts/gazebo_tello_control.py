@@ -10,7 +10,7 @@ import sys, select, termios, tty
 class tello_control:
 
     #velocidade do drone 0 a 1.0
-    speed = 0.10
+    speed = 0.50
 
     #teclas de comando de velocidade
     move_keys = {

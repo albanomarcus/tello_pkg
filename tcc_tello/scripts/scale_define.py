@@ -29,10 +29,10 @@ def callback(point_cloud):
     Callback para processar a nuvem de pontos recebida.
     """
     # Identificar os dois pontos conhecidos (substitua pelos índices ou coordenadas corretas)
-    known_point1_index = 7182  # Índice do primeiro ponto na nuvem de pontos
-    known_point2_index = 7453  # Índice do segundo ponto na nuvem de pontos
+    known_point1_index = 8536  # Índice do primeiro ponto na nuvem de pontos
+    known_point2_index = 11473  # Índice do segundo ponto na nuvem de pontos
 
-    real_distance = 4.5  # Distância real entre os dois pontos no mundo real (em metros)
+    real_distance = 4  # Distância real entre os dois pontos no mundo real (em metros)
 
     points = np.array(list(pc2.read_points(point_cloud, skip_nans=True)))
 

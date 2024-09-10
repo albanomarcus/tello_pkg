@@ -4,7 +4,7 @@
     <node name="point_cloud_scaled" pkg="tcc_tello" type="scale_adjustment.py" output="screen" />
     
     <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
-		<param name="resolution" value="0.05" />
+		<param name="resolution" value="0.1" />
         <remap from = "/projected_map" to="/map"/>
 		
 		<!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
@@ -23,8 +23,8 @@
 
         <!--Filter out obstacles which are lower than 1 meter -->
         <param name="occupancy_min_z" value="1.0" />
-        <param name="occupancy_max_z" value="1.5" />
-        <param name="height_map" value="true" />
+        <param name="occupancy_max_z" value="1.8" />
+        <param name="height_map" value="false" />
         <param name="publish_free_space" value="true" />   
 
 	</node>
