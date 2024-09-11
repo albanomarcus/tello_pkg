@@ -64,9 +64,13 @@ Visualization Manager:
           Value: true
         base_stabilized:
           Value: true
+        camera:
+          Value: true
         front_cam_link:
           Value: true
         front_cam_optical_frame:
+          Value: true
+        imu:
           Value: true
         sonar_link:
           Value: true
@@ -83,11 +87,15 @@ Visualization Manager:
           base_footprint:
             base_stabilized:
               base_link:
+                front_cam_link:
+                  front_cam_optical_frame:
+                    {}
                 sonar_link:
                   {}
-          front_cam_link:
-            front_cam_optical_frame:
-              {}
+          camera:
+            {}
+          imu:
+            {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image
@@ -175,7 +183,7 @@ Visualization Manager:
       Marker Topic: /orb_slam3/kf_markers
       Name: kf markers
       Namespaces:
-        {}
+        kf_markers: true
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -230,7 +238,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.4369235038757324
+      Distance: 10.109959602355957
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -246,9 +254,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.28520357608795166
+      Pitch: -0.5697962045669556
       Target Frame: <Fixed Frame>
-      Yaw: 3.1468303203582764
+      Yaw: 4.6318535804748535
     Saved: ~
 Window Geometry:
   Displays:
