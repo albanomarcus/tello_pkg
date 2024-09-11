@@ -28,6 +28,6 @@
   </include>
 
   <!-- Visualization -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/config_rviz.rviz" output="screen" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/rviz/config_rviz.rviz" output="screen" />
 
 </launch>

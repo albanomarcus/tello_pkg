@@ -11,7 +11,7 @@
 		<param name="frame_id" type="string" value="world" />
 		
 		<!--maximum range to integrate (speedup!) -->
-		<param name="sensor_model/max_range" value="100.0" />
+		<param name="sensor_model/max_range" value="40.0" />
 		
 		<!--data source to integrate (PointCloud2) -->
 		<remap from="cloud_in" to="/scaled_point_cloud" />
@@ -28,11 +28,4 @@
         <param name="publish_free_space" value="true" />   
 
 	</node>
-
-     <!--<node pkg="pointcloud_to_laserscan" type= "pointcloud_to_laserscan_node" name="pointcloud_to_laserscan"  >
-        <remap from="cloud_in" to= "/scaled_point_cloud"/>
-        <param name="min_height" value="1.0" />
-        <param name="max_height" value="2.0" />
-    </node>    -->
-
 </launch>

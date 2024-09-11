@@ -22,12 +22,11 @@
 		<node pkg="tcc_tello" name="aux_odom" type="tello_new_odom.py" output="screen">	
 		</node>
 
-		<!--<node pkg="image_transport" name="image_decompressed" type="republish" args="compressed in:=image_raw raw out:=/front/image_raw" >
-			<param name="image_transport" value="h264"/>
-		</node>--> 
-		
-		</group>
+	</group>
   	<!-- Visualization -->
-  	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/config_rviz.rviz" output="screen" />
-
+  	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/rviz/config_rviz.rviz" output="screen" />
+	
+	<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+    	<arg name="model" value="$(find tcc_tello)/description/urdf/tello_with_cam.gazebo.xacro"/> 
+	</include>
 </launch>

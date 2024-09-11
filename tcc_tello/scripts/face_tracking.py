@@ -65,18 +65,18 @@ def findFace(img):
 def trackFace(info, w, pid, pError):
     area = info[1]
     x, y = info[0]
-    xSpeed = 0 #velocidade em X
+    ySpeed = 0 #velocidade em X
 
     error = x - w // 2
     speed = pid[0] * error + pid[1] * (error - pError)
     speed = int(np.clip(speed, -100, 100))
 
     if fbRange[0] < area < fbRange[1]:
-        xSpeed = 0
+        ySpeed = 0
     elif area > fbRange[1]:
-        xSpeed = -0.3  
+        ySpeed = -0.5  
     elif area < fbRange[0] and area != 0:
-        xSpeed = 0.3  
+        ySpeed = 0.5  
 
     if x == 0:
         speed = 0
@@ -84,8 +84,8 @@ def trackFace(info, w, pid, pError):
 
     # Criando mensagem Twist
     vel_msg = Twist()
-    vel_msg.linear.x = xSpeed
-    vel_msg.angular.z = -speed / 100.0  # Convertendo a velocidade calculada para publicar no /tello/cmd_vel
+    vel_msg.linear.y = ySpeed
+    vel_msg.angular.z = (2*speed) / 100.0  # Convertendo a velocidade calculada para publicar no /tello/cmd_vel
 
     # Publishing the command
     velocity_publisher.publish(vel_msg)

@@ -31,11 +31,11 @@ def send_email(filename):
 
         # Email data
         message = MIMEMultipart()
-        message['Subject'] = 'Teste - Alerta!'
+        message['Subject'] = 'Face Detectada!'
         message['From'] = sender_email
         message['To'] = ','.join(receivers)
 
-        html = 'Alerta!!!'
+        html = 'Uma face foi detectada pelo drone.'
         message.attach(MIMEText(html, 'html'))
 
         # Set attachment attributes

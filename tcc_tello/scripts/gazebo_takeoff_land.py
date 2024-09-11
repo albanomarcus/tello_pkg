@@ -48,7 +48,7 @@ def callback_sonar(msg, callback_args):
     global isFlying, takingOff, landing
     sensor = msg.range
     
-    if sensor > 1.0 and isFlying == True and takingOff == True: 
+    if sensor > 1.5 and isFlying == True and takingOff == True: 
         takingOff = False
         vel_msg = Twist()
         vel_msg.linear.x = float(0)

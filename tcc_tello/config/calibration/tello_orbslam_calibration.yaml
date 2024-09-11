@@ -8,15 +8,28 @@ File.version: "1.0"
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV) 
-Camera1.fx: 899.8993371882239 #4.250258563372763e+02
-Camera1.fy: 891.2688298342263 #4.267976260903337e+02
-Camera1.cx: 481.7242199450654 #3.860151866550880e+02
-Camera1.cy: 396.1787262902864 #2.419130336743440e+02
+#Camera1.fx: 899.8993371882239 #4.250258563372763e+02
+#Camera1.fy: 891.2688298342263 #4.267976260903337e+02
+#Camera1.cx: 481.7242199450654 #3.860151866550880e+02
+#Camera1.cy: 396.1787262902864 #2.419130336743440e+02
 
-Camera1.k1: -0.28340811 #-0.288105327549552
-Camera1.k2: 0.07395907 #0.074578284234601
-Camera1.p1: 0.00019359 #7.784489598138802e-04
-Camera1.p2: 1.76187114e-05 #-2.277853975035461e-04
+#Camera1.k1: -0.28340811 #-0.288105327549552
+#Camera1.k2: 0.07395907 #0.074578284234601
+#Camera1.p1: 0.00019359 #7.784489598138802e-04
+#Camera1.p2: 1.76187114e-05 #-2.277853975035461e-04
+
+# Camera Intrinsics
+Camera1.fx: 906.2277660014528
+Camera1.fy: 906.2346071193277
+Camera1.cx: 477.2845807094265
+Camera1.cy: 365.3125641951174
+
+# Distortion Coefficients
+Camera1.k1: 0.03257476287961026
+Camera1.k2: -0.3938035694224344
+Camera1.p1: 0.0017310303518515713
+Camera1.p2: -0.0023832543241962146
+Camera1.k3: 1.1314006226981383
 
 # Camera resolution
 Camera.width: 1280
@@ -32,7 +45,7 @@ Camera.fps: 30
 Camera.RGB: 1
 
 # # Transformation from camera to body-frame (imu)
-# IMU.T_b_c1: !!opencv-matrix
+#IMU.T_b_c1: !!opencv-matrix
 #      rows: 4
 #      cols: 4
 #      dt: f
@@ -40,13 +53,18 @@ Camera.RGB: 1
 #            0.999557249008, 0.0149672133247, 0.025715529948, -0.064676986768,
 #           -0.0257744366974, 0.00375618835797, 0.999660727178, 0.00981073058949,
 #            0.0, 0.0, 0.0, 1.0]
+#
+#      data: [1.0, 0.0, 0.0, 0.0,
+#             0.0, 1.0, 0.0, 0.0,
+#             0.0, 0.0, 1.0, 0.0,
+#             0.0, 0.0, 0.0, 1.0]
 
 #  # IMU noise
-# IMU.NoiseGyro: 1.7e-4 #1.6968e-04
-# IMU.NoiseAcc: 2.0000e-3 #2.0e-3
-# IMU.GyroWalk: 1.9393e-05 
-# IMU.AccWalk: 3.0000e-03 # 3e-03
-# IMU.Frequency: 100.0
+#IMU.NoiseGyro: 1.7e-4 #1.6968e-04
+#IMU.NoiseAcc: 2.0000e-3 #2.0e-3
+#IMU.GyroWalk: 1.9393e-05 
+#IMU.AccWalk: 3.0000e-03 # 3e-03
+#IMU.Frequency: 100.0
 
 # RPY angles (in rad) the world frame will be rotated by
 WorldRPY.roll: 1.61 #1.57079632679 #1.91986 #1.74533 

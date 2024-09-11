@@ -7,16 +7,17 @@ import rospy
 from std_msgs.msg import String, Empty, Float32
 from nav_msgs.msg import Odometry
 from tello_driver.msg import TelloStatus
+import tf
+from geometry_msgs.msg import TransformStamped
+import math
 
 #criação de objetos
 offset_odom = Odometry()
-offset_z = Float32
+offset_z = Float32()
 last_pose = Odometry()
+tf_broadcaster = tf.TransformBroadcaster()
 
-# status possíveis = ["desligado",
-#                     "voando",
-#                     "pousando"
-#                     "decolando"]
+# status possíveis = ["desligado","voando","pousando","decolando"]
 
 status = "desligado"
 
@@ -45,52 +46,29 @@ def callback_land(msg):
 def callback_odom(msg, callback_args):
     publisher = callback_args
     new_odom = Odometry()
+    new_odom.header = msg.header
+    new_odom.header.frame_id = "world"
+    new_odom.child_frame_id = "base_link"
+    
 
     global offset_odom, offset_z, status, last_pose
     
 # executa a primeira vez para definir os offsets    
     if status == "decolando": 
-        offset_odom.pose.pose.position.x     =  msg.pose.pose.position.x
-        offset_odom.pose.pose.position.y     =  msg.pose.pose.position.y
+        offset_odom = msg
         offset_odom.pose.pose.position.z     =  msg.pose.pose.position.z - offset_z
-        offset_odom.pose.pose.orientation.w  =  msg.pose.pose.orientation.w
-        offset_odom.pose.pose.orientation.x  =  msg.pose.pose.orientation.x
-        offset_odom.pose.pose.orientation.y  =  msg.pose.pose.orientation.y
-        offset_odom.pose.pose.orientation.z  =  msg.pose.pose.orientation.z
-        offset_odom.twist.twist.linear.x     =  msg.twist.twist.linear.x
-        offset_odom.twist.twist.linear.y     =  msg.twist.twist.linear.y
-        offset_odom.twist.twist.linear.z     =  msg.twist.twist.linear.z
-        offset_odom.twist.twist.angular.x    =  msg.twist.twist.angular.x
-        offset_odom.twist.twist.angular.y    =  msg.twist.twist.angular.y
-        offset_odom.twist.twist.angular.z    =  msg.twist.twist.angular.z
-        #print("*************************primeira vez*************************")
         status = "voando"
 
 # executa o processo de pouso e remove "impulso" do gráfico.
-    elif status == "pousando" and offset_z <0.3: 
+    elif status == "pousando" and offset_z <0.3:
+        new_odom = msg 
         new_odom.pose.pose.position.x    =  msg.pose.pose.position.x - offset_odom.pose.pose.position.x
         new_odom.pose.pose.position.y    =  msg.pose.pose.position.y - offset_odom.pose.pose.position.y
         new_odom.pose.pose.position.z    =  0
-        new_odom.pose.pose.orientation.w =  msg.pose.pose.orientation.w - offset_odom.pose.pose.orientation.w
-        new_odom.pose.pose.orientation.x =  msg.pose.pose.orientation.x - offset_odom.pose.pose.orientation.x
-        new_odom.pose.pose.orientation.y =  msg.pose.pose.orientation.y - offset_odom.pose.pose.orientation.y
-        new_odom.pose.pose.orientation.z =  msg.pose.pose.orientation.z - offset_odom.pose.pose.orientation.z
-        new_odom.twist.twist.linear.x    =  msg.twist.twist.linear.x -    offset_odom.twist.twist.linear.x
-        new_odom.twist.twist.linear.y    =  msg.twist.twist.linear.y -    offset_odom.twist.twist.linear.y
-        new_odom.twist.twist.linear.z    =  msg.twist.twist.linear.z -    offset_odom.twist.twist.linear.z
-        new_odom.twist.twist.angular.x   =  msg.twist.twist.angular.x -   offset_odom.twist.twist.angular.x
-        new_odom.twist.twist.angular.y   =  msg.twist.twist.angular.y -   offset_odom.twist.twist.angular.y
-        new_odom.twist.twist.angular.z   =  msg.twist.twist.angular.z -   offset_odom.twist.twist.angular.z   
-        #print("--------------------------------pousando--------------------------------")
         
-        # armazena os ultimos valores de posição x, y e orientação (verificar necessidade de armazenar a orientação)
+        # armazena os ultimos valores de posição x, y
         last_pose.pose.pose.position.x = new_odom.pose.pose.position.x
         last_pose.pose.pose.position.y = new_odom.pose.pose.position.y
-        last_pose.pose.pose.orientation.w = new_odom.pose.pose.orientation.w
-        last_pose.pose.pose.orientation.x = new_odom.pose.pose.orientation.x
-        last_pose.pose.pose.orientation.y = new_odom.pose.pose.orientation.y
-        last_pose.pose.pose.orientation.z = new_odom.pose.pose.orientation.z
-        publisher.publish(new_odom)
         status = "desligado"
     
 # garante que o drone está pousado e parado na ultima posição de x e y
@@ -109,26 +87,41 @@ def callback_odom(msg, callback_args):
         new_odom.twist.twist.angular.y   =  0
         new_odom.twist.twist.angular.z   =  0   
         #print("--------------------------------desligado--------------------------------") 
-        publisher.publish(new_odom)
-        
+
 # publica a odometria durante status = voando.
     else:
+        new_odom = msg
         new_odom.pose.pose.position.x    =  msg.pose.pose.position.x - offset_odom.pose.pose.position.x
         new_odom.pose.pose.position.y    =  msg.pose.pose.position.y - offset_odom.pose.pose.position.y
         new_odom.pose.pose.position.z    =  msg.pose.pose.position.z - offset_odom.pose.pose.position.z
-        new_odom.pose.pose.orientation.w =  msg.pose.pose.orientation.w - offset_odom.pose.pose.orientation.w
-        new_odom.pose.pose.orientation.x =  msg.pose.pose.orientation.x - offset_odom.pose.pose.orientation.x
-        new_odom.pose.pose.orientation.y =  msg.pose.pose.orientation.y - offset_odom.pose.pose.orientation.y
-        new_odom.pose.pose.orientation.z =  msg.pose.pose.orientation.z - offset_odom.pose.pose.orientation.z
-        new_odom.twist.twist.linear.x    =  msg.twist.twist.linear.x - offset_odom.twist.twist.linear.x
-        new_odom.twist.twist.linear.y    =  msg.twist.twist.linear.y - offset_odom.twist.twist.linear.y
-        new_odom.twist.twist.linear.z    =  msg.twist.twist.linear.z - offset_odom.twist.twist.linear.z
-        new_odom.twist.twist.angular.x   =  msg.twist.twist.angular.x - offset_odom.twist.twist.angular.x
-        new_odom.twist.twist.angular.y   =  msg.twist.twist.angular.y - offset_odom.twist.twist.angular.y
-        new_odom.twist.twist.angular.z   =  msg.twist.twist.angular.z - offset_odom.twist.twist.angular.z 
-        publisher.publish(new_odom)
+    
+    publisher.publish(new_odom)
 
+    if not is_valid_quaternion(new_odom.pose.pose.orientation):
+        rospy.logwarn("Invalid quaternion, skipping tf broadcast")
+        return  
+
+    tf_broadcaster.sendTransform(
+        (new_odom.pose.pose.position.x, new_odom.pose.pose.position.y, new_odom.pose.pose.position.z),
+        (new_odom.pose.pose.orientation.x, new_odom.pose.pose.orientation.y, new_odom.pose.pose.orientation.z, new_odom.pose.pose.orientation.w),
+        rospy.Time.now(),
+        "base_link",  # child frame
+        "world"       # parent frame
+        )
+    
     #print (status)
+
+def is_valid_quaternion(orientation):
+    """Checks if a quaternion is valid."""
+    # Calculate the magnitude (length) of the quaternion
+    length = math.sqrt(
+        orientation.x ** 2 +
+        orientation.y ** 2 +
+        orientation.z ** 2 +
+        orientation.w ** 2
+    )
+    # A valid quaternion should have a magnitude close to 1
+    return math.isclose(length, 1.0, rel_tol=1e-3)
 
 def main():
 # cria node para o script
