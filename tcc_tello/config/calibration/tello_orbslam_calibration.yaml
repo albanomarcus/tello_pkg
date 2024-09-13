@@ -32,7 +32,7 @@ Camera1.p2: -0.0023832543241962146
 Camera1.k3: 1.1314006226981383
 
 # Camera resolution
-Camera.width: 1280
+Camera.width: 960
 Camera.height: 720
 
 #Camera.newWidth: 640
