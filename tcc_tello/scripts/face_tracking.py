@@ -55,7 +55,7 @@ def findFace(img):
         if not first_image_saved:
             save_image(img)
             first_image_saved = True
-            stop_navigation()
+            #stop_navigation()
 
         return img, [myFaceListC[i], myFaceListArea[i]]
     else:

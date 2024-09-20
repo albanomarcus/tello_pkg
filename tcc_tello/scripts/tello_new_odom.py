@@ -16,7 +16,10 @@ offset_odom = Odometry()
 offset_z = Float32()
 last_pose = Odometry()
 tf_broadcaster = tf.TransformBroadcaster()
-
+last_x = 0
+last_y = 0
+last_z = 0
+last_w = 1
 # status possíveis = ["desligado","voando","pousando","decolando"]
 
 status = "desligado"
@@ -50,8 +53,7 @@ def callback_odom(msg, callback_args):
     new_odom.header.frame_id = "world"
     new_odom.child_frame_id = "base_link"
     
-
-    global offset_odom, offset_z, status, last_pose
+    global offset_odom, offset_z, status, last_pose, last_x, last_y, last_z, last_w
     
 # executa a primeira vez para definir os offsets    
     if status == "decolando": 
@@ -63,9 +65,9 @@ def callback_odom(msg, callback_args):
     elif status == "pousando" and offset_z <0.3:
         new_odom = msg 
         new_odom.pose.pose.position.x    =  msg.pose.pose.position.x - offset_odom.pose.pose.position.x
-        new_odom.pose.pose.position.y    =  msg.pose.pose.position.y - offset_odom.pose.pose.position.y
+        new_odom.pose.pose.position.y    =  -(msg.pose.pose.position.y - offset_odom.pose.pose.position.y)
         new_odom.pose.pose.position.z    =  0
-        
+
         # armazena os ultimos valores de posição x, y
         last_pose.pose.pose.position.x = new_odom.pose.pose.position.x
         last_pose.pose.pose.position.y = new_odom.pose.pose.position.y
@@ -92,14 +94,21 @@ def callback_odom(msg, callback_args):
     else:
         new_odom = msg
         new_odom.pose.pose.position.x    =  msg.pose.pose.position.x - offset_odom.pose.pose.position.x
-        new_odom.pose.pose.position.y    =  msg.pose.pose.position.y - offset_odom.pose.pose.position.y
+        new_odom.pose.pose.position.y    =  -(msg.pose.pose.position.y - offset_odom.pose.pose.position.y)
         new_odom.pose.pose.position.z    =  msg.pose.pose.position.z - offset_odom.pose.pose.position.z
+        new_odom.pose.pose.orientation.z =  -(msg.pose.pose.orientation.z)
+        aux = new_odom.twist.twist.linear.x
+        new_odom.twist.twist.linear.x    =  msg.twist.twist.linear.y 
+        new_odom.twist.twist.linear.y    =  -(aux)
     
     publisher.publish(new_odom)
 
     if not is_valid_quaternion(new_odom.pose.pose.orientation):
-        rospy.logwarn("Invalid quaternion, skipping tf broadcast")
-        return  
+        rospy.logwarn("Invalid quaternion")
+        new_odom.pose.pose.orientation.x = last_x 
+        new_odom.pose.pose.orientation.y = last_y 
+        new_odom.pose.pose.orientation.z = last_z 
+        new_odom.pose.pose.orientation.w = last_w  
 
     tf_broadcaster.sendTransform(
         (new_odom.pose.pose.position.x, new_odom.pose.pose.position.y, new_odom.pose.pose.position.z),
@@ -108,7 +117,10 @@ def callback_odom(msg, callback_args):
         "base_link",  # child frame
         "world"       # parent frame
         )
-    
+    last_x = new_odom.pose.pose.orientation.x
+    last_y = new_odom.pose.pose.orientation.y
+    last_z = new_odom.pose.pose.orientation.z
+    last_w = new_odom.pose.pose.orientation.w
     #print (status)
 
 def is_valid_quaternion(orientation):

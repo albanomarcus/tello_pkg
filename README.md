@@ -1,4 +1,4 @@
-# Detecção e rastreamento de pessoas por veículos aéreos não tripulados
+# Utilização do veículo aéreo não tripulado Tello para mapeamento, navegação autônoma, detecção e rastreamento de pessoas 
 
 Ubuntu 20.04.5 LTS
 
@@ -19,11 +19,7 @@ Para realizar a comunicação com o drone real.
 ### Instalando pacotes dependentes
 ```
 sudo apt install ros-noetic-cv-bridge
-sudo apt install ros-noetic-image-transport
-sudo apt install ros-noetic-camera-info-manager
-sudo apt install ros-noetic-codec-image-transport
-
-sudo apt install liburdfdom-tools #gerar arquivos pdf do urdf
+sudo apt install liburdfdom-tools #gerar arquivos pdf do urdf (Opcional)
 ```
 ### Clonar pacotes adaptados para ROS Noetic
 ```
@@ -54,8 +50,7 @@ roslaunch tcc_tello tello_control.launch
 
 ```
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
-git clone https://github.com/ros-geographic-info/unique_identifier.git
-git clone https://github.com/ros-geographic-info/geographic_info.git
+
 
 catkin build && source devel/setup.bash
 ```
@@ -88,25 +83,39 @@ Executar:
 rosrun plotjuggler plotjuggler
 ```
 
-## ORGANIZAR A PARTIR DAQUI
-Install avoidance module dependencies (pointcloud library and octomap).
+## Mapeamento
 
-sudo apt install libpcl1 ros-noetic-octomap-*
-
-sudo apt install ros-noetic-pointcloud-to-laserscan
-
+### Aplicando Escala
 executar roslaunch gazebo_point_cloud_manipulation.launch apenas quando a execução da rosbag estiver sendo finalizada.
+### Octomap
+sudo apt install ros-noetic-octomap-*
+
+## Navegação Autônoma
 
 sudo apt install ros-noetic-move-base
 
 sudo apt-get install ros-noetic-global-planner
+## Envio de E-mails
+
+## Rosbridge para envio de sinais via Web Socket
+sudo apt-get install ros-noetic-rosbridge-suite
+
 
 
 ### TO DO:
-
+j
 
 Criar novo mapa para simulação e remover os outros que não serão utilizados.
 
+Arrumar esse readme
+
+colocar videos, imagens, etc...
+
+mudar nome do pacote
+
+mudar nome do repositório
+
+adicionar controle de altura pra o drone real
 
 
 

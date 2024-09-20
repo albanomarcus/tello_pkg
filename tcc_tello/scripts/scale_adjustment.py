@@ -14,7 +14,7 @@ def scale_point_cloud(point_cloud, scale_factor):
     """
     points = np.array(list(pc2.read_points(point_cloud,field_names=("x", "y", "z"), skip_nans=True)))
     points[:, :3] *= scale_factor
-    modified_points = [((x/2)+2, y, z + 1.0) for x, y, z in points]
+    modified_points = [(x, y, z+ 1.2) for x, y, z in points]
     scaled_point_cloud = pc2.create_cloud(point_cloud.header, point_cloud.fields, modified_points)
     return scaled_point_cloud
     
@@ -25,7 +25,7 @@ def callback(point_cloud):
     """
     # Colocar o valor da escala calculada 
 
-    scale_factor = 7.5#6.498548086326428 #rosbag = teste2.bag
+    scale_factor = 6.018648579486336#5.564094954455052#6.498548086326428 #rosbag = teste2.bag
 
     # scale_factor = 3.8455560957865367 #rosbag = subset.bag
     # scale_factor = 8.384939138795436 #rosbag = subset2.bag

@@ -32,7 +32,7 @@ Camera1.p2: -0.0023832543241962146
 Camera1.k3: 1.1314006226981383
 
 # Camera resolution
-Camera.width: 1280
+Camera.width: 960
 Camera.height: 720
 
 #Camera.newWidth: 640
@@ -67,9 +67,9 @@ Camera.RGB: 1
 #IMU.Frequency: 100.0
 
 # RPY angles (in rad) the world frame will be rotated by
-WorldRPY.roll: 1.61 #1.57079632679 #1.91986 #1.74533 
+WorldRPY.roll: 1.78024 #1.57079632679 #1.91986 #1.74533 
 WorldRPY.pitch: 0.0
-WorldRPY.yaw: 1.386
+WorldRPY.yaw: 1.481
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters

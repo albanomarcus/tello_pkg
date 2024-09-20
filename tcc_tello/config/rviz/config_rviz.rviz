@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Image1
+        - /Path3
       Splitter Ratio: 0.5
     Tree Height: 514
   - Class: rviz/Selection
@@ -235,6 +236,30 @@ Visualization Manager:
       Topic: /tello/new_odom
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /tello/trajectory
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -263,7 +288,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.207286834716797
+      Distance: 8.72079086303711
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -271,17 +296,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -3.814434051513672
-        Y: -0.4330006241798401
-        Z: 6.582046985626221
+        X: -4.985967636108398
+        Y: -1.164489984512329
+        Z: 4.7136549949646
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.36539870500564575
+      Pitch: 0.02539895474910736
       Target Frame: <Fixed Frame>
-      Yaw: 3.0754103660583496
+      Yaw: 3.3804287910461426
     Saved: ~
 Window Geometry:
   Displays:
@@ -301,5 +326,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1244
-  X: 1316
+  X: 676
   Y: 27

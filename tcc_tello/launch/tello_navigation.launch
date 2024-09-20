@@ -2,10 +2,12 @@
 
 <launch>
     
-     
+    <node name="move_base_cmd_vel" pkg="tcc_tello" type="move_base_correct.py" output="screen" /> 
         <!-- Start move_base (global and local cost maps and path planners) -->
     <node pkg="move_base" type="move_base" name="move_base" clear_params="true" output="screen">
-        <remap from = "/cmd_vel" to="/tello/cmd_vel" />
+        
+        <remap from = "/odom" to = "/tello/new_odom"/>
+        <remap from = "/cmd_vel" to = "/cmd_vel_move_base"/>
         <!-- Top-level parameters -->
         <rosparam command="load" file="$(find tcc_tello)/config/move_base/move_base.yaml" />
 
