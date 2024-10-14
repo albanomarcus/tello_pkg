@@ -38,7 +38,7 @@ source ~/.bashrc
 ```
 sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 ```	
-### Instalando Catkin_tools para usar catkin build (opcional, caso não deseje utilizar o comendo catkin bild, substituir pelo comendo catkin_make)
+### Instalando Catkin_tools para usar catkin build (opcional, caso não deseje utilizar o comando catkin build, substituir pelo comando catkin_make nas próximas etapas)
 ```
 wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
 sudo apt-get update
