@@ -6,14 +6,14 @@
 TrajectoryPlannerROS:
     # Robot configuration
     global_frame_id: world
-    holonomic_robot: false
+    holonomic_robot: true
     max_vel_x: 0.8
-    min_vel_x: 0.5
+    min_vel_x: 0.4
     max_vel_theta: 2.75
     min_vel_theta: -2.75
     min_in_place_vel_theta: 0.2
     acc_lim_x: 2.5
-    acc_lim_y: 0.0
+    acc_lim_y: 2.5
     acc_lim_theta: 3.2
 
     # Forward simulation
@@ -30,8 +30,8 @@ TrajectoryPlannerROS:
     occdist_scale: 0.01
 
     # Goal tolerance
-    xy_goal_tolerance: 0.2
-    yaw_goal_tolerance: 0.2
+    xy_goal_tolerance: 0.1
+    yaw_goal_tolerance: 0.3
     latch_xy_goal_tolerance: true
 
     # Recovery behaviors

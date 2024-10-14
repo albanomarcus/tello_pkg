@@ -5,7 +5,7 @@
 # - http://wiki.ros.org/costmap_2d/hydro/inflation
 
 local_costmap:
-    global_frame: world
+    global_frame: map
     rolling_window: true
     width: 3.0
     height: 3.0
@@ -27,5 +27,5 @@ local_costmap:
             inf_is_valid: true
 
     inflation_layer:
-        inflation_radius: 0.35
+        inflation_radius: 0.45
         cost_scaling_factor: 10

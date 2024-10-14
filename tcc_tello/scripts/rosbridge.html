@@ -121,7 +121,7 @@
             secs: Math.floor(Date.now() / 1000),
             nsecs: 0
           },
-          frame_id: "map"
+          frame_id: "world"
         },
         goal_id: {
           stamp: {
@@ -133,7 +133,7 @@
         goal: {
           target_pose: {
             header: {
-              frame_id: "map"
+              frame_id: "world"
             },
             pose: {
               position: {
@@ -203,15 +203,15 @@
       <h2>Navegação autônoma</h2>
 
       <div class="navigation-map">
-        <img src="/home/marcus/Pictures/navigation.png" alt="map" width="480" height="360">
+        <img src="/home/marcus/catkin_ws/src/tcc_marcus_albano/tcc_tello/config/rosbridge/rosbridge_map.png" alt="map" width="480" height="360">
       </div>
 
       <div class="navigation-buttons">
         <!-- Botões para enviar objetivos de navegação -->
         <button onclick="sendMoveBaseGoal(0.0, 0.0, 1.0)">Início</button>
-        <button onclick="sendMoveBaseGoal(1.0, 0.0, 1.0)">Posição 1</button>
-        <button onclick="sendMoveBaseGoal(2.0, 0.0, 1.0)">Posição 2</button>
-        <button onclick="sendMoveBaseGoal(3.0, 0.0, 1.0)">Posição 3</button>
+        <button onclick="sendMoveBaseGoal(7.031, 1.948, 1.0)">Posição 1</button>
+        <button onclick="sendMoveBaseGoal(19.261, -0.498, 1.0)">Posição 2</button>
+        <button onclick="sendMoveBaseGoal(13.481, -0.697, 1.0)">Posição 3</button>
       </div>
     </div>
 
