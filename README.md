@@ -100,12 +100,13 @@ sudo apt-get install ros-noetic-global-planner
 ## Rosbridge para envio de sinais via Web Socket
 sudo apt-get install ros-noetic-rosbridge-suite
 
+## Map_server
+sudo apt install ros-noetic-map-server
+
+
 
 
 ### TO DO:
-j
-
-Criar novo mapa para simulação e remover os outros que não serão utilizados.
 
 Arrumar esse readme
 
@@ -115,7 +116,6 @@ mudar nome do pacote
 
 mudar nome do repositório
 
-adicionar controle de altura pra o drone real
 
 
 
