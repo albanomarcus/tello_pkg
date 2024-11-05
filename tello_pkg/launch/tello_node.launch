@@ -19,17 +19,17 @@
 			<param name="camera_calibration" value="$(arg camera_calibration)" />			
 		</node>
 
-		<node pkg="tcc_tello" name="aux_odom" type="tello_new_odom.py" output="screen"/>
+		<node pkg="tello_pkg" name="aux_odom" type="tello_new_odom.py" output="screen"/>
 		
 	</group>
   	<!-- Visualization -->
-  	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/rviz/config_rviz.rviz" output="screen" />
+  	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tello_pkg)/config/rviz/config_rviz.rviz" output="screen" />
 	
 	<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
-    	<arg name="model" value="$(find tcc_tello)/description/urdf/tello_with_cam.gazebo.xacro"/> 
+    	<arg name="model" value="$(find tello_pkg)/description/urdf/tello_with_cam.gazebo.xacro"/> 
 	</include>
 
-	<node pkg="tcc_tello" name="image_compression_node" type="image_compressed.py" output="screen"/>
+	<node pkg="tello_pkg" name="image_compression_node" type="image_compressed.py" output="screen"/>
 
 	    <!-- Trajectory path -->
     <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_server" output="screen" ns="tello" >
@@ -39,19 +39,27 @@
         <param name="/trajectory_publish_rate"  value="30.0" />
     </node>
 
-	<node name="map_server" pkg="map_server" type="map_server" output="screen" args="$(find tcc_tello)/config/maps/merged_real_map.yaml">
-  	</node>
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan_node" output="screen">
+    
+        <!-- Input point cloud topic -->
+        <param name="cloud_topic" value="/scaled_point_cloud" />
+        
+        <!-- Output laser scan topic -->
+        <param name="scan_topic" value="/scan" />
+        
+        <!-- Minimum and maximum range of the laser scan -->
+        <param name="range_min" value="0.5" />
+        <param name="range_max" value="10.0" />
+        
+        <!-- Vertical angle range for the scan, usually small -->
+        <param name="angle_min" value="-0.1" />
+        <param name="angle_max" value="0.1" />
 
-  <!-- Static Transform Publisher from map to world -->
-  	<node pkg="tf2_ros" type="static_transform_publisher" name="map_to_world_broadcaster" args="40.000001 39.500001 0 0 0 0 map world"/>
-	
-  <!-- Navigation -->
-  	<include file="$(find tcc_tello)/launch/tello_navigation.launch"/> 
-
-  <!-- Control -->
-  	<include file="$(find tcc_tello)/launch/tello_control.launch"/> 
-
-  <!-- Rosbridge -->
-  	<include file="$(find tcc_tello)/launch/tello_rosbridge.launch"/> 
+        <!-- Number of points in a laser scan -->
+        <param name="scan_time" value="0.033" />
+        
+        <!-- Transform frame for the scan (usually the same as the camera frame) -->
+        <param name="target_frame" value="base_link" />
+    </node>
 
 </launch>

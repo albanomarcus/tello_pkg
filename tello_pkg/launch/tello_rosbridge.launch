@@ -4,6 +4,6 @@
      <arg name="port" value="9090"/>
   </include>
 
-  <node pkg="tcc_tello" type="open_html.py" name="open_html_node" output="screen" />
+  <node pkg="tello_pkg" type="open_html.py" name="open_html_node" output="screen" />
 
 </launch>

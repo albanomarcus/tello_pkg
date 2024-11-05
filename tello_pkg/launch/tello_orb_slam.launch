@@ -8,7 +8,7 @@
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(find orb_slam3_ros)/orb_slam3/Vocabulary/ORBvoc.txt.bin"/>
-        <param name="settings_file" type="string" value="$(find tcc_tello)/config/calibration/tello_orbslam_calibration.yaml"/>
+        <param name="settings_file" type="string" value="$(find tello_pkg)/config/calibration/tello_orbslam_calibration.yaml"/>
 
         <!-- Parameters for ROS -->
         <param name="world_frame_id"    type="string"   value="world" />
@@ -17,7 +17,7 @@
     </node>
     
     <!-- Visualization -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tcc_tello)/config/rviz/tello_orbslam.rviz" output="screen" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tello_pkg)/config/rviz/tello_orbslam.rviz" output="screen" />
     
     <!-- Trajectory path -->
     <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_server_orb_slam3" output="screen" ns="orb_slam3_ros" >
