@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-import rospy, cv2, numpy as np
+import rospy, cv2
 from sensor_msgs.msg import Image
-from geometry_msgs.msg import Twist
 from cv_bridge import CvBridge, CvBridgeError
 from datetime import datetime
-from std_msgs.msg import String
-from actionlib_msgs.msg import GoalID
 
 # Parameters
 w, h = 360, 240 # tamanho da imagem redimensionada largura e altura
@@ -14,13 +11,12 @@ pid = [0.4, 0.4, 0] # pid
 pError = 0 # erro inicial pid
 first_image_saved = False
 
-
 #Para a navegação autônoma para que o drone possa seguir a primeira pessoa que encontrar.
 
 #Salva a primeira imagem que contenha uma face
 def save_image(img):
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"/home/marcus/catkin_ws/src/tcc_marcus_albano/tcc_tello/images/face_detected_{current_time}.jpg"
+    filename = f"/home/marcus/catkin_ws/src/tcc_marcus_albano/tello_pkg/images/face_detected_{current_time}.jpg"
     cv2.imwrite(filename, img)
     rospy.loginfo(f"Image saved: {filename}")
 
@@ -41,9 +37,7 @@ rospy.init_node('face_tracker', anonymous=False)
 # ROS Publishers and Subscribers
 image_subscriber = rospy.Subscriber('/tello/camera/image_raw', Image, image_callback)
 
-
 bridge = CvBridge()
-
 
 try:
     rospy.spin()

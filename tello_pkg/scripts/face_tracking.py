@@ -24,7 +24,7 @@ def stop_navigation():
 #Salva a primeira imagem que contenha uma face
 def save_image(img):
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"/home/marcus/catkin_ws/src/tcc_marcus_albano/tcc_tello/images/face_detected_{current_time}.jpg"
+    filename = f"/home/marcus/catkin_ws/src/tcc_marcus_albano/tello_pkg/images/face_detected_{current_time}.jpg"
     cv2.imwrite(filename, img)
     rospy.loginfo(f"Image saved: {filename}")
     image_path_publisher.publish(filename)
@@ -32,7 +32,7 @@ def save_image(img):
 #Detecta a face mais próxima a câmera
 def findFace(img):
     global first_image_saved
-    faceCascade = cv2.CascadeClassifier('/home/marcus/catkin_ws/src/tcc_marcus_albano/tcc_tello/config/haarcascades/haarcascade_frontalface_default.xml')    # local onde está o arquivo do haarcascade
+    faceCascade = cv2.CascadeClassifier('/home/marcus/catkin_ws/src/tcc_marcus_albano/tello_pkg/config/haarcascades/haarcascade_frontalface_default.xml')    # local onde está o arquivo do haarcascade
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                                                                         # converte a imagem para escalas de cinza
     faces = faceCascade.detectMultiScale(imgGray, 1.2, 8)
 

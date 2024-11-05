@@ -4,11 +4,10 @@ Script utilizado para corrigir a odometria gerada pelo Tello.
 """
 #imports
 import rospy
-from std_msgs.msg import String, Empty, Float32
+from std_msgs.msg import Empty, Float32
 from nav_msgs.msg import Odometry
 from tello_driver.msg import TelloStatus
 import tf
-from geometry_msgs.msg import TransformStamped
 import math
 
 #criação de objetos
@@ -43,7 +42,6 @@ def callback_offset(msg):
 def callback_land(msg):
     global status
     status = "pousando"
-
 
 # recebe valores da odometria, realiza o tratamento e publica nova odometria
 def callback_odom(msg, callback_args):
