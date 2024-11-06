@@ -60,8 +60,9 @@ roslaunch tello_pkg tello_control.launch
 ## Simulação
 Foi utilizado o pacote [Hector Quadrotor adaptado para ROS Noetic](https://github.com/RAFALAMAO/hector_quadrotor_noetic.git) como base para a simulação, porém foi criado um novo modelo 3D e um novo arquivo URDF para o Tello.
 
-![Modelagem Tello 3D](images_readme/tello_modelagem.png)
-
+<p align="center">
+  <img src="images_readme/tello_modelagem.png" alt="Modelagem Tello 3D" width="600">
+</p>
 Para instalar o ambiente de simulação:
 
 No terminal:
@@ -125,7 +126,9 @@ roslaunch point_cloud_manipulation.launch
 
 O mapa gerado possui pontos desconhecidos que podem afetar a navegação autônoma, para isso recomenda-se aplicar uma correção, onde os pontos desconhecidos tornam-se pontos conhecidos e navegáveis. Utilizando o script criar_mapas.py, foram criados mapas navegáveis com as mesmas dimensões dos mapas existentes e com o script mesclar_mapas.py foi realizada a fusão dos novos mapas com os mapas previamente obtidos.
 
-![Mapa Real](images_readme/mapa_real_new.png)
+<p align="center">
+  <img src="images_readme/mapa_real_new.png" alt="Mapa Real" width="600">
+</p>
 
 ## Navegação Autônoma
 Para realizar a navegação autônoma, é necessário instalar os seguintes pacotes dependentes:
@@ -172,12 +175,11 @@ Executando a navegação autônoma
   roslaunch tello_pkg gazebo_navigation.launch
   ```  
 
-ADICIOANAR GIF DA NAVEGAÇÃO AUTÔNOMA
 
 ## Detecção e rastreamento de faces
 O processo de detecção e rastreamento de faces utiliza o classificador Haar Cascade da biblioteca OpenCV. Ao detectar a primeira face, a navegação autônoma é interrompida, uma imagem da face é capturada e enviada por e-mail utilizando o script email_sender.py e o drone inicializa o procedimento de rastreamento da face, seguindo a face da pessoa encontrada até acabar a bateria ou receber um comando de intervenção. 
 
-Para enicializar o procedimento, executar no terminal #4:
+Para inicializar o procedimento, executar no terminal #4:
 ```
 roslaunch tello_pkg tello_face_tracking_and_send_email.launch
 ```
@@ -186,7 +188,10 @@ O script de envio de e-mails (email_sender.py) é passível de personalização.
 
 
 ## Painel de Controle
-![Painel de Controle](images_readme/painel_rosbridge.png)
+
+<p align="center">
+  <img src="images_readme/painel_rosbridge.png" alt="Painel de Controle" width="600">
+</p>
 
 Para a criação do painel de controle via WebSocket, foi utilizado o pacote RosBridge_suite, para instalá-lo:
 
