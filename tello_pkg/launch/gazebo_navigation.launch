@@ -2,7 +2,12 @@
 
 <launch>
     
-   
+    <node name="map_server" pkg="map_server" type="map_server" output="screen" args="$(find tello_pkg)/config/maps/merged_gazebo_map.yaml">
+    </node>
+
+    <!-- Static Transform Publisher from map to world -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_world_broadcaster" args="3 27.9 0 0 0 0 map world"/>
+    
     <node pkg="move_base" type="move_base" name="move_base" clear_params="true" output="screen">
         
         <remap from = "/odom" to = "/tello/new_odom"/>
