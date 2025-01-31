@@ -68,7 +68,9 @@ Para instalar o ambiente de simulação:
 
 No terminal:
 ```
+cd ~/catkin_ws/src
 git clone https://github.com/RAFALAMAO/hector_quadrotor_noetic.git
+cd ~/catkin_ws
 catkin build && source devel/setup.bash
 ```
 
