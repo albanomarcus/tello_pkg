@@ -37,7 +37,7 @@ No terminal:
 
 ```
 sudo apt install ros-noetic-cv-bridge
-cd ~/catkin_ws
+cd ~/catkin_ws/src
 git clone --recursive https://github.com/albanomarcus/tello_driver.git
 git clone https://github.com/albanomarcus/camera_info_manager_py.git
 catkin build && source devel/setup.bash
