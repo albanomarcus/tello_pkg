@@ -37,12 +37,13 @@
       <param name="/trajectory_publish_rate"  value="30.0" />
   </node>
 
-  <node name="map_server" pkg="map_server" type="map_server" output="screen" args="$(find tello_pkg)/config/maps/merged_gazebo_map.yaml">
-  </node>
+  <!-- <node name="map_server" pkg="map_server" type="map_server" output="screen" args="$(find tello_pkg)/config/maps/merged_gazebo_map.yaml">
+  </node> -->
 
-  <!-- Static Transform Publisher from map to world -->
-  <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_world_broadcaster" args="3 27.9 0 0 0 0 map world"/>
-  
+  <!-- Static Transform Publisher from map to world  -->
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_world_broadcaster" args="3 27.9 0 0 0 0 map world"/>
+   -->
+
   <!-- Navigation -->
   <include file="$(find tello_pkg)/launch/gazebo_navigation.launch"/> 
 
