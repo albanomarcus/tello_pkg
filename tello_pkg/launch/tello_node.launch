@@ -39,27 +39,4 @@
         <param name="/trajectory_publish_rate"  value="30.0" />
     </node>
 
-    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan_node" output="screen">
-    
-        <!-- Input point cloud topic -->
-        <param name="cloud_topic" value="/scaled_point_cloud" />
-        
-        <!-- Output laser scan topic -->
-        <param name="scan_topic" value="/scan" />
-        
-        <!-- Minimum and maximum range of the laser scan -->
-        <param name="range_min" value="0.5" />
-        <param name="range_max" value="10.0" />
-        
-        <!-- Vertical angle range for the scan, usually small -->
-        <param name="angle_min" value="-0.1" />
-        <param name="angle_max" value="0.1" />
-
-        <!-- Number of points in a laser scan -->
-        <param name="scan_time" value="0.033" />
-        
-        <!-- Transform frame for the scan (usually the same as the camera frame) -->
-        <param name="target_frame" value="base_link" />
-    </node>
-
 </launch>
