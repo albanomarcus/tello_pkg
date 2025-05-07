@@ -63,8 +63,9 @@ roslaunch tello_pkg tello_control.launch
 Foi utilizado o pacote [Hector Quadrotor adaptado para ROS Noetic](https://github.com/RAFALAMAO/hector_quadrotor_noetic.git) como base para a simulação, porém foi criado um novo modelo 3D e um novo arquivo URDF para o Tello.
 
 <p align="center">
-  <img src="images_readme/tello_modelagem.jpg" alt="Modelagem Tello 3D" width="600">
+  <img src="images_readme/tello_model.jpg" alt="Modelagem Tello" width="600">
 </p>
+
 Para instalar o ambiente de simulação:
 
 No terminal:
@@ -92,7 +93,7 @@ roslaunch tello_pkg gazebo_tello_control.launch
 ## Mapeamento
 Para realizar o mapeamento foram utilizados os pacotes ORB-SLAM3 e Octomap, juntamente com um script criado para aplicar uma escala aos pontos gerados pelo octomap, devido a escala original não corresponder a escala real.
 
-
+Vídeo:
 <p align="center">
   <a href="https://youtu.be/Bah-9Z6bp30">
     <img src="https://img.youtube.com/vi/Bah-9Z6bp30/0.jpg" alt="Mapeamento orbslam3" width="700">
