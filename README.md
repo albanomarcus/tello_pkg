@@ -10,6 +10,7 @@ Foi desenvolvido um script de envio automático de e-mail contendo a foto da fac
 
 O projeto foi realizado em ambientes real, utilizando o drone Tello e também foi desenvolvido em ambiente simulado utilizando o Gazebo. 
 
+Vídeos:
 <p align="center">
   <a href="https://youtu.be/q3dZaqaDLLk">
     <img src="https://img.youtube.com/vi/q3dZaqaDLLk/0.jpg" alt="Navegação autônoma" width="45%">
@@ -62,7 +63,7 @@ roslaunch tello_pkg tello_control.launch
 Foi utilizado o pacote [Hector Quadrotor adaptado para ROS Noetic](https://github.com/RAFALAMAO/hector_quadrotor_noetic.git) como base para a simulação, porém foi criado um novo modelo 3D e um novo arquivo URDF para o Tello.
 
 <p align="center">
-  <img src="images_readme/tello_modelagem.png" alt="Modelagem Tello 3D" width="600">
+  <img src="images_readme/tello_modelagem.jpg" alt="Modelagem Tello 3D" width="600">
 </p>
 Para instalar o ambiente de simulação:
 
